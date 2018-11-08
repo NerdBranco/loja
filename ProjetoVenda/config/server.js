@@ -6,8 +6,27 @@ var consign = require('consign');
 var bodyParser = require('body-parser');
 /* importar o módulo do express-validator */
 var expressValidator = require('express-validator');
+/* importar o módulo mysql */
+var mysql = require('mysql');
+/* importar o módulo express-flash */
+var flash = require('express-flash');
+/* importar o módulo express-myconnection*/
+var myconnection = require('express-myconnection');
 /* iniciar o objeto do express */
 var app = express();
+
+/* importanto configurações */
+var config = require('./config')
+
+var dboptions = {
+	host: config.database.host,
+	user: config.database.user,
+	password: config.database.password,
+	port: config.database.port,
+	database: config.database.db
+}
+
+app.use(myconnection(mysql, dboptions, 'pool'));
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
@@ -22,12 +41,25 @@ app.use(bodyParser.urlencoded({extended: true}));
 /* configurar o middleware express-validator */
 app.use(expressValidator());
 
+app.use(flash());
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+app.use(cookieParser('keyboard cat'))
+app.use(session({ 
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { maxAge: 60000 }
+}))
+
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign()
 	.include('app/routes')
 	.then('app/models')
 	.then('app/controllers')
 	.into(app);
+
 
 /* exportar o objeto app */
 module.exports = app;
