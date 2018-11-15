@@ -9,7 +9,7 @@ module.exports.addProduto = function (application, req, res) {
 module.exports.listarProduto = function (application, req, res) {
 
     req.getConnection(function (error, conn) {
-        conn.query('SELECT * FROM produto ORDER BY id DESC', function (err, rows, fields) {
+        conn.query('SELECT * FROM produto ORDER BY id', function (err, rows, fields) {
             //if(err) throw err
             if (err) {
                 req.flash('error', err)

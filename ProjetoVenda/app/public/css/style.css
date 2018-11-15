@@ -10,16 +10,15 @@ body {
 }
 
 #addIcone{
+    width: 16%;
     margin-left: 30%;
 }
 #listagemProdutos{
-    margin-top: 10%;
-    margin-left: 16%; 
+    padding: 5%;
 }
 
 #listarIcone{
     width: 16%;
-    margin-top: 17%;
     margin-left: 5%;
 }
 
