@@ -6,7 +6,7 @@
     <div class="panel panel-default" style=" background: #ddddddcc">
         <div id="listagemProdutos">
             <h1 class="text-center">Listagem de produtos</h1>
-            <a href="/produto"><button type="button" class="btn btn-primary" style="margin: 10px;">Voltar</button></a>
+            <a href="/produtos/menu"><button type="button" class="btn btn-primary" style="margin: 10px;">Voltar</button></a>
 
             <table id="listProdutos" class="table table-striped">
 
@@ -38,7 +38,7 @@
                     </td>
                     <td>
                             <div style="float:right">
-                                <a href='/produto/edit/<%= produto.id %>'>Edit</a> &nbsp;							
+                                <a href='/produtos/<%= produto.id %>'>Edit</a> &nbsp;							
                                 <form method="post" action="/produto/delete/<%= produto.id %>" style="float:right">
                                     <input class="btn btn-primary" type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
                                     <input type="hidden" name="_method" value="DELETE" />
@@ -50,7 +50,7 @@
                 <% } %>
 
             </table>
-            <a href="/produto"><button type="button" class="btn btn-primary">Voltar</button></a>
+            <a href="/produtos/menu"><button type="button" class="btn btn-primary">Voltar</button></a>
         </div>
     </div>
     <% include ../layout/footer%>

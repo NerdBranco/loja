@@ -4,6 +4,8 @@ var express = require('express');
 var consign = require('consign');
 /* importar o módulo do body-parser */
 var bodyParser = require('body-parser');
+/* importar o módulo do method-override */
+var methodOverride = require('method-override');
 /* importar o módulo do express-validator */
 var expressValidator = require('express-validator');
 /* importar o módulo mysql */
@@ -35,8 +37,22 @@ app.set('views', './app/views');
 /* configurar o middleware express.static */
 app.use(express.static('./app/public'));
 
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(methodOverride('_method'));
+app.use(bodyParser.json());
+
 /* configurar o middleware body-parser */
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 /* configurar o middleware express-validator */
 app.use(expressValidator());

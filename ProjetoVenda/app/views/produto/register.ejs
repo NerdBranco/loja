@@ -27,7 +27,7 @@
       </div>
     <% }%>
 
-    <form action="/addProduto" method="post" id="addProduto" name="form-cadastro">
+    <form action="/produtos" method="post" class="produto" name="form-cadastro">
       <div class="form-group">
         <label for="nomeProduto">Produto</label>
         <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Nome do produto" value="<%=dadosForm.nomeProduto%>">
@@ -39,7 +39,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">Salvar</button>
-      <a href="/produto"><button type="button" class="btn btn-primary">Cancelar</button></a>
+      <a href="/produtos/menu"><button type="button" class="btn btn-primary">Cancelar</button></a>
     </form>
   </div>
 </div>
