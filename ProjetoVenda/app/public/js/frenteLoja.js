@@ -23,6 +23,7 @@ $(function () {
             carrinho.splice(index, 1);
             $("#comprarItens").text('Comprar itens selecionados [' + carrinho.length + ']');
         }
+        console.log(carrinho);
     });
 
     $("#comprarItens").click(function () {

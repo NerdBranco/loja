@@ -11,7 +11,7 @@ module.exports.index = function(application, req, res){
                     data: ''
                 });
             } else {
-                // render to views/user/list.ejs template file
+                // render to views/user/index.ejs template file
                 res.render("index", {
                     title: 'Product List',
                     data: rows

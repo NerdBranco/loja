@@ -12,6 +12,7 @@
                 $("#navprodutos").addClass("active");
                 $("#navclientes").removeClass("active");
                 $("#navvendas").removeClass("active");
+                $("#navcarrinho").removeClass("active");
             </script>
         
             <input type="search" autofocus class="form-control ds-input" id="search-produtos" placeholder="Search...">
@@ -64,7 +65,7 @@
                             <div style="float:right">
                                 <a href='/produtos/<%= produto.id %>'>Edit</a> &nbsp;							
                                 <form method="post" action="/produtos/<%= produto.id %>" style="float:right">
-                                    <input class="btn btn-primary" type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+                                    <input class="btn btn-primary" type="submit" name="delete" value='Delete' onClick="return confirm('Você quer realmente deletar esse produto?')" />
                                     <input type="hidden" name="_method" value="DELETE" />
                                 </form>
                             </div>
